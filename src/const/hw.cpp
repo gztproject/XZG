@@ -32,16 +32,16 @@ MistConfig mistConfigs[] = {
 // Board configurations
 // !!! Don't forget to edit BOARD_CFG_CNT !!!
 BrdConfigStruct brdConfigs[] = {
-    {"UZG-01", .ethConfigIndex = 2, .zbConfigIndex = 0, .mistConfigIndex = 1},
-    {"SLZB-06", .ethConfigIndex = 1, .zbConfigIndex = 1, .mistConfigIndex = 2},
-    {"WT32-ETH01", .ethConfigIndex = 1, .zbConfigIndex = 1, .mistConfigIndex = 0},
-    {"T-Internet-POE", .ethConfigIndex = 2, .zbConfigIndex = 0, .mistConfigIndex = 0},
-    {"Olimex-ESP32-POE", .ethConfigIndex = 0, .zbConfigIndex = 0, .mistConfigIndex = 0},
-    {"China-GW", .ethConfigIndex = 0, .zbConfigIndex = 2, .mistConfigIndex = 0},
-    {"TubesZB-eth", .ethConfigIndex = 1, .zbConfigIndex = 1, .mistConfigIndex = 0},
-    {"TubesZB-eth_usb", .ethConfigIndex = 1, .zbConfigIndex = 4, .mistConfigIndex = 0},
-    {"TubesZB-poe", .ethConfigIndex = 0, .zbConfigIndex = 5, .mistConfigIndex = 0},
-    {"TubesZB-poe-2022", .ethConfigIndex = 0, .zbConfigIndex = 6, .mistConfigIndex = 0},
-    {"TubesZB-poe-2023", .ethConfigIndex = 0, .zbConfigIndex = 7, .mistConfigIndex = 0},
-    {"CZC-1.0", .ethConfigIndex = 2, .zbConfigIndex = 0, .mistConfigIndex = 1},
+    {"UZG-01", 2, 0, 1},
+    {"SLZB-06", 1, 1, 2},
+    {"WT32-ETH01", 1, 1, 0},
+    {"T-Internet-POE", 2, 0, 0},
+    {"Olimex-ESP32-POE", 0, 0, 0},
+    {"China-GW", 0, 2, 0},
+    {"TubesZB-eth", 1, 1, 0},
+    {"TubesZB-eth_usb", 1, 4, 0},
+    {"TubesZB-poe", 0, 5, 0},
+    {"TubesZB-poe-2022", 0, 6, 0},
+    {"TubesZB-poe-2023", 0, 7, 0},
+    {"CZC-1.0", 2, 0, 1},
 };

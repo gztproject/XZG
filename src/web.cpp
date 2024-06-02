@@ -1,15 +1,21 @@
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <ETH.h>
-#include <HTTPClient.h>
-#include <WiFiClientSecure.h>
+//#include <HTTPClient.h>
+//#include <WiFi.h>
+//#include <WiFiClientSecure.h>
 #include <LittleFS.h>
 #include <Update.h>
 #include <WebServer.h>
 #include <FS.h>
-#include <WiFi.h>
 #include <Ticker.h>
 #include <CCTools.h>
+//#include <esp_system.h>
+
+#include <WiFi.h>
+#include <WiFiMulti.h>
+#include <HTTPClient.h>
+//#include <NetworkClientSecure.h>
 
 #include "config.h"
 #include "web.h"
@@ -1338,11 +1344,12 @@ String getRootData(bool update)
         doc["espCores"] = ESP.getChipCores();
         doc["espFreq"] = ESP.getCpuFreqMHz();
 
-        esp_chip_info_t chip_info;
-        esp_chip_info(&chip_info);
+        //esp_chip_info_t chip_info;
+        //esp_chip_info(&chip_info);
 
         const char *espFlashType = "espFlashType";
-        if (chip_info.features & CHIP_FEATURE_EMB_FLASH)
+        //if (chip_info.features & CHIP_FEATURE_EMB_FLASH)
+        if (1 < 2)
         {
             doc[espFlashType] = 1;
         }
@@ -1626,10 +1633,10 @@ void getEspUpdate(String esp_fw_url)
     LOGI("getEspUpdate: %s", esp_fw_url.c_str());
 
     HTTPClient clientWeb;
-    WiFiClientSecure client;
-    client.setInsecure(); // the magic line, use with caution
+    //WiFiClientSecure client;
+    //client.setInsecure(); // the magic line, use with caution
     clientWeb.setFollowRedirects(HTTPC_STRICT_FOLLOW_REDIRECTS);
-    clientWeb.begin(client, esp_fw_url);
+    //clientWeb.begin(client, esp_fw_url);
     clientWeb.addHeader("Content-Type", "application/octet-stream");
 
     // Get file, just to check if each reachable

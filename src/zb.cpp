@@ -208,8 +208,8 @@ void printBufferAsHex(const byte *buffer, size_t length)
 bool eraseWriteZbUrl(const char *url, std::function<void(float)> progressShow, CCTools &CCTool)
 {
     HTTPClient http;
-    WiFiClientSecure client;
-    client.setInsecure();
+    //WiFiClientSecure client;
+    //client.setInsecure();
     http.setFollowRedirects(HTTPC_STRICT_FOLLOW_REDIRECTS);
 
     int loadedSize = 0;
@@ -228,7 +228,7 @@ bool eraseWriteZbUrl(const char *url, std::function<void(float)> progressShow, C
             printLogMsg("Erase completed!");
         }
 
-        http.begin(client, url);
+        //http.begin(client, url);
         http.addHeader("Content-Type", "application/octet-stream");
 
         if (loadedSize > 0)

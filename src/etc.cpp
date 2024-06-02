@@ -616,7 +616,8 @@ ThisConfigStruct *findBrdConfig(int searchId = 0)
       }
     }
 
-    if (ETH.begin(ethConfigs[ethIdx].addr, ethConfigs[ethIdx].pwrPin, ethConfigs[ethIdx].mdcPin, ethConfigs[ethIdx].mdiPin, ethConfigs[ethIdx].phyType, ethConfigs[ethIdx].clkMode, ethConfigs[ethIdx].pwrAltPin))
+    if (ETH.begin(ethConfigs[ethIdx].phyType, ethConfigs[ethIdx].addr, ethConfigs[ethIdx].mdcPin, ethConfigs[ethIdx].mdiPin, ethConfigs[ethIdx].pwrPin, ethConfigs[ethIdx].clkMode)) //ethConfigs[ethIdx].pwrAltPin
+    //if (ETH.begin(ethConfigs[ethIdx].addr, ethConfigs[ethIdx].pwrPin, ethConfigs[ethIdx].mdcPin, ethConfigs[ethIdx].mdiPin, ethConfigs[ethIdx].phyType, ethConfigs[ethIdx].clkMode)) //ethConfigs[ethIdx].pwrAltPin
     {
       ethOk = true;
       LOGD("Ethernet config OK: %d", ethIdx);
@@ -792,7 +793,7 @@ void wgLoop()
           {
             LOGD("Peer disconnect");
           }
-          vars.vpnWgPeerIp.clear();
+          //vars.vpnWgPeerIp.clear();
           vars.vpnWgConnect = false;
         }
       }

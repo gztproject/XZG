@@ -15,6 +15,8 @@
 #include <WireGuard-ESP32.h>
 #include <CronAlarms.h>
 
+//#include <NetworkClientSecure.h>
+
 // NO SSL SUPPORT in current SDK
 // #define ASYNC_TCP_SSL_ENABLED 1
 
@@ -76,7 +78,8 @@ void initLan()
 {
   LOGD("Try to use %s", hwConfig.board);
 
-  if (ETH.begin(hwConfig.eth.addr, hwConfig.eth.pwrPin, hwConfig.eth.mdcPin, hwConfig.eth.mdiPin, hwConfig.eth.phyType, hwConfig.eth.clkMode, hwConfig.eth.pwrAltPin))
+  if (ETH.begin(hwConfig.eth.phyType, hwConfig.eth.addr, hwConfig.eth.mdcPin, hwConfig.eth.mdiPin,  hwConfig.eth.pwrPin, hwConfig.eth.clkMode)) // hwConfig.eth.pwrAltPin
+  //if (ETH.begin(hwConfig.eth.addr, hwConfig.eth.pwrPin, hwConfig.eth.mdcPin, hwConfig.eth.mdiPin,  hwConfig.eth.phyType, hwConfig.eth.clkMode)) // hwConfig.eth.pwrAltPin
   {
     String modeString = networkCfg.ethDhcp ? "DHCP" : "Static";
     LOGD("LAN start ok, %s", modeString);
@@ -257,7 +260,7 @@ void NetworkEvent(WiFiEvent_t event)
       tmrNetworkOverseer.start();
     }
     break;
-  case SYSTEM_EVENT_ETH_STOP: // 27:
+  //case SYSTEM_EVENT_ETH_STOP: // 27:
   case ARDUINO_EVENT_ETH_STOP:
     LOGD("%s Stopped", ethKey);
     vars.connectedEther = false;
